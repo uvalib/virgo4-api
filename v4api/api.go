@@ -88,6 +88,19 @@ type PoolResult struct {
 	ContentLanguage string                 `json:"-"`
 }
 
+// ConfidenceIndex will convert a string confidence into a numeric value
+// with low having the lowest value and exact the highest
+func (pr *PoolResult) ConfidenceIndex() int {
+	conf := []string{"low", "medium", "high", "exact"}
+	for idx, val := range conf {
+		if val == pr.Confidence {
+			return idx
+		}
+	}
+	// No confidence match. Assume worst value
+	return 0
+}
+
 // Facet contains the fields for a single facet.
 type Facet struct {
 	ID      string        `json:"id"`
@@ -132,4 +145,17 @@ type RecordField struct {
 type SearchPreferences struct {
 	TargetPool   string   `json:"target_pool"`
 	ExcludePools []string `json:"exclude_pool"`
+}
+
+// IsExcluded will return true if the target URL is included in the ExcludePools preferece
+func (p *SearchPreferences) IsExcluded(URL string) bool {
+	if URL == "" {
+		return false
+	}
+	for _, excludedURL := range p.ExcludePools {
+		if excludedURL == URL {
+			return true
+		}
+	}
+	return false
 }
