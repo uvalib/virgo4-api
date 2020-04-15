@@ -27,9 +27,11 @@ type PoolAttribute struct {
 
 // PoolIdentity contains the complete data that descibes a pool and its abilities
 type PoolIdentity struct {
+	ID          string          `json:"id"`
 	Name        string          `json:"name"`
 	Description string          `json:"description"`
 	Mode        string          `json:"mode"`
+	URL         string          `json:"url"`
 	Attributes  []PoolAttribute `json:"attributes,omitempty"`
 	SortOptions []SortOption    `json:"sort_options,omitempty"`
 }
