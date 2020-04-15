@@ -47,11 +47,12 @@ type SortOption struct {
 }
 
 // SearchRequest contains all of the data necessary for a client seatch request
-// Note that the JMRL pool does not support facets/filters
 type SearchRequest struct {
-	Query      string     `json:"query"`
-	Pagination Pagination `json:"pagination"`
-	Sort       SortOrder  `json:"sort,omitempty"`
+	Query       string            `json:"query"`
+	Pagination  Pagination        `json:"pagination"`
+	Sort        SortOrder         `json:"sort,omitempty"`
+	Filters     []Filter          `json:"filters,omitempty"`
+	Preferences SearchPreferences `json:"preferences,omitempty"`
 }
 
 // Pagination cantains pagination info
@@ -61,18 +62,44 @@ type Pagination struct {
 	Total int `json:"total"`
 }
 
-// PoolResult is the response V4API response format
+// Filter contains the fields for a single filter.
+type Filter struct {
+	PoolID string `json:"pool_id"`
+	Facets []struct {
+		FacetID string `json:"facet_id"`
+		Value   string `json:"value"`
+	} `json:"facets"`
+}
+
+// PoolResult contains search responce data from a pool
 type PoolResult struct {
+	ServiceURL      string                 `json:"service_url,omitempty"`
+	PoolName        string                 `json:"pool_id,omitempty"`
 	ElapsedMS       int64                  `json:"elapsed_ms,omitempty"`
 	Pagination      Pagination             `json:"pagination"`
 	Sort            SortOrder              `json:"sort,omitempty"`
 	Groups          []Group                `json:"group_list,omitempty"`
+	FacetList       []Facet                `json:"facet_list,omitempty"`
 	Confidence      string                 `json:"confidence,omitempty"`
 	Debug           map[string]interface{} `json:"debug"`
 	Warnings        []string               `json:"warnings"`
 	StatusCode      int                    `json:"status_code"`
 	StatusMessage   string                 `json:"status_msg,omitempty"`
 	ContentLanguage string                 `json:"-"`
+}
+
+// Facet contains the fields for a single facet.
+type Facet struct {
+	ID      string        `json:"id"`
+	Name    string        `json:"name"`
+	Buckets []FacetBucket `json:"buckets,omitempty"`
+}
+
+// FacetBucket contains the fields for an individual bucket for a facet.
+type FacetBucket struct {
+	Value    string `json:"value"`
+	Count    int    `json:"count"`
+	Selected bool   `json:"selected"`
 }
 
 // Group contains the records for a single group in a search result set.
@@ -96,6 +123,13 @@ type RecordField struct {
 	Value      string `json:"value"`
 	Visibility string `json:"visibility,omitempty"` // e.g. "basic" or "detailed".  empty implies "basic"
 	Display    string `json:"display,omitempty"`    // e.g. "optional".  empty implies not optional
-	Provider   string `json:"provider,omitempty"`
+	Provider   string `json:"provider,omitempty"`   // for URLs (e.g. "hathitrust", "proquest")
+	Item       string `json:"item,omitempty"`       // for certain URLs (currently hathitrust)
 	RISCode    string `json:"ris_code,omitempty"`
+}
+
+// SearchPreferences contains preferences for the search
+type SearchPreferences struct {
+	TargetPool   string   `json:"target_pool"`
+	ExcludePools []string `json:"exclude_pool"`
 }
