@@ -1,5 +1,22 @@
 package v4api
 
+// SearchResponse contains teh aggregated and sorted search response data from all pools in the system
+type SearchResponse struct {
+	Request     *SearchRequest `json:"request"`
+	Pools       []PoolIdentity `json:"pools"`
+	TotalTimeMS int64          `json:"total_time_ms"`
+	TotalHits   int            `json:"total_hits"`
+	Results     []*PoolResult  `json:"pool_results"`
+	Warnings    []string       `json:"warnings"`
+	Suggestions []Suggestion   `json:"suggestions"`
+}
+
+// Suggestion contains search suggestion data
+type Suggestion struct {
+	Type  string `json:"type"`
+	Value string `json:"value"`
+}
+
 // SortOptionEnum is the enumerated type for WorldCat sort options
 type SortOptionEnum int
 
