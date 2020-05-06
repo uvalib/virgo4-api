@@ -124,6 +124,7 @@ func (pr *PoolResult) ConfidenceIndex() int {
 type Facet struct {
 	ID      string        `json:"id"`
 	Name    string        `json:"name"`
+	Type    string        `json:"type"`
 	Buckets []FacetBucket `json:"buckets,omitempty"`
 }
 
@@ -141,10 +142,21 @@ type Group struct {
 	Records []Record `json:"record_list,omitempty"`
 }
 
+// RelatedRecord contains basic info for other records with the same
+// group value (currently only used by the Solr image pool).
+type RelatedRecord struct {
+	ID              string `json:"id,omitempty"`
+	IIIFManifestURL string `json:"iiif_manifest_url,omitempty"`
+	IIIFImageURL    string `json:"iiif_image_url,omitempty"`
+	IIIFBaseURL     string `json:"iiif_base_url,omitempty"`
+}
+
 // Record is a summary of one search hit
 type Record struct {
-	Fields []RecordField          `json:"fields"`
-	Debug  map[string]interface{} `json:"debug"`
+	Fields     []RecordField          `json:"fields"`
+	Related    []RelatedRecord        `json:"related,omitempty"`
+	Debug      map[string]interface{} `json:"debug"`
+	GroupValue string                 `json:"-"` // used in Solr pools to properly group results
 }
 
 // RecordField contains metadata for a single field in a record.
