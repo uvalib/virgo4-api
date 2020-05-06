@@ -190,3 +190,16 @@ func (p *SearchPreferences) IsExcluded(URL string) bool {
 	}
 	return false
 }
+
+// Provider contains the attributes for a single provider
+type Provider struct {
+	Provider    string `json:"provider"`
+	Label       string `json:"label,omitempty"`
+	HomepageURL string `json:"homepage_url,omitempty"`
+	LogoURL     string `json:"logo_url,omitempty"`
+}
+
+// Providers holds information about any provider this pool may return
+type PoolProviders struct {
+	Providers []Provider `json:"providers"`
+}
