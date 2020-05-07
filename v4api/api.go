@@ -100,8 +100,8 @@ type PoolResult struct {
 	Groups          []Group                `json:"group_list,omitempty"`
 	FacetList       []Facet                `json:"facet_list,omitempty"`
 	Confidence      string                 `json:"confidence,omitempty"`
-	Debug           map[string]interface{} `json:"debug"`
-	Warnings        []string               `json:"warnings"`
+	Debug           map[string]interface{} `json:"debug,omitempty"`
+	Warnings        []string               `json:"warnings,omitempty"`
 	StatusCode      int                    `json:"status_code"`
 	StatusMessage   string                 `json:"status_msg,omitempty"`
 	ContentLanguage string                 `json:"-"`
@@ -155,7 +155,7 @@ type RelatedRecord struct {
 type Record struct {
 	Fields     []RecordField          `json:"fields"`
 	Related    []RelatedRecord        `json:"related,omitempty"`
-	Debug      map[string]interface{} `json:"debug"`
+	Debug      map[string]interface{} `json:"debug,omitempty"`
 	GroupValue string                 `json:"-"` // used in Solr pools to properly group results
 }
 
@@ -163,7 +163,7 @@ type Record struct {
 type RecordField struct {
 	Name       string `json:"name"`
 	Type       string `json:"type,omitempty"` // empty implies "text"
-	Label      string `json:"label"`
+	Label      string `json:"label,omitempty"`
 	Value      string `json:"value"`
 	Visibility string `json:"visibility,omitempty"` // e.g. "basic" or "detailed".  empty implies "basic"
 	Display    string `json:"display,omitempty"`    // e.g. "optional".  empty implies not optional
