@@ -158,7 +158,6 @@ type RelatedRecord struct {
 	ID              string `json:"id,omitempty"`
 	IIIFManifestURL string `json:"iiif_manifest_url,omitempty"`
 	IIIFImageURL    string `json:"iiif_image_url,omitempty"`
-	IIIFBaseURL     string `json:"iiif_base_url,omitempty"`
 }
 
 // Record is a summary of one search hit
