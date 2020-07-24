@@ -174,10 +174,12 @@ type RecordField struct {
 	Type       string `json:"type,omitempty"` // empty implies "text"
 	Label      string `json:"label,omitempty"`
 	Value      string `json:"value"`
+	Separator  string `json:"separator,omitempty"`  // literal string, or pre-defined values such as "paragraph"
 	Visibility string `json:"visibility,omitempty"` // e.g. "basic" or "detailed".  empty implies "basic"
 	Display    string `json:"display,omitempty"`    // e.g. "optional".  empty implies not optional
 	Provider   string `json:"provider,omitempty"`   // for URLs (e.g. "hathitrust", "proquest")
-	Item       string `json:"item,omitempty"`       // for certain URLs (currently hathitrust)
+	Item       string `json:"item,omitempty"`       // for certain URLs (e.g. hathitrust)
+	Icon       string `json:"icon,omitempty"`       // for certain URLs (e.g. copyrights)
 	RISCode    string `json:"ris_code,omitempty"`
 }
 
