@@ -187,19 +187,6 @@ type SearchPreferences struct {
 	ExcludePools []string `json:"exclude_pool"`
 }
 
-// IsExcluded will return true if the target URL is included in the ExcludePools preferece
-func (p *SearchPreferences) IsExcluded(URL string) bool {
-	if URL == "" {
-		return false
-	}
-	for _, excludedURL := range p.ExcludePools {
-		if excludedURL == URL {
-			return true
-		}
-	}
-	return false
-}
-
 // Provider contains the attributes for a single provider
 type Provider struct {
 	Provider    string `json:"provider"`
@@ -208,7 +195,7 @@ type Provider struct {
 	LogoURL     string `json:"logo_url,omitempty"`
 }
 
-// Providers holds information about any provider this pool may return
+// PoolProviders holds information about any provider this pool may return
 type PoolProviders struct {
 	Providers []Provider `json:"providers"`
 }
