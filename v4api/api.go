@@ -63,6 +63,8 @@ type SortOrder struct {
 type SortOption struct {
 	ID    string `json:"id"`
 	Label string `json:"label"`
+	Asc   string `json:"asc"`
+	Desc  string `json:"desc"`
 }
 
 // SearchRequest contains all of the data necessary for a client seatch request
