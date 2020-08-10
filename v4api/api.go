@@ -182,7 +182,6 @@ type RecordField struct {
 	Provider          string `json:"provider,omitempty"`   // for URLs (e.g. "hathitrust", "proquest")
 	Item              string `json:"item,omitempty"`       // for certain URLs (e.g. hathitrust)
 	Icon              string `json:"icon,omitempty"`       // for certain URLs (e.g. copyrights)
-	RISCode           string `json:"ris_code,omitempty"`   // deprecated; will be replaced by CitationPart
 	CitationPart      string `json:"citation_part,omitempty"`
 	SummaryLibrary    string `json:"summary_library,omitempty"`
 	SummaryLocation   string `json:"summary_location,omitempty"`
