@@ -184,14 +184,6 @@ type RecordField struct {
 	Icon            string      `json:"icon,omitempty"`       // for certain URLs (e.g. copyrights)
 	CitationPart    string      `json:"citation_part,omitempty"`
 	StructuredValue interface{} `json:"structured_value,omitempty"`
-
-	// deprecated, remove after structured value in use
-	SummaryLibrary    string `json:"summary_library,omitempty"`
-	SummaryLocation   string `json:"summary_location,omitempty"`
-	SummaryText       string `json:"summary_text,omitempty"`
-	SummaryNote       string `json:"summary_note,omitempty"`
-	SummaryLabel      string `json:"summary_label,omitempty"`
-	SummaryCallNumber string `json:"summary_call_number,omitempty"`
 }
 
 // SearchPreferences contains preferences for the search
