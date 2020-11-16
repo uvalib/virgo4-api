@@ -218,3 +218,9 @@ type QueryFilterValue struct {
 	Value string `json:"value"`
 	Count int    `json:"count"`
 }
+
+// QueryFilterResponse contains the full response for a query for all pre-search filters.
+type QueryFilterResponse struct {
+	Sources []string      `json:"sources"`
+	Filters []QueryFilter `json:"filters"`
+}
