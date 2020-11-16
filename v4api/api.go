@@ -48,6 +48,7 @@ type PoolIdentity struct {
 	Name        string          `json:"name"`
 	Description string          `json:"description"`
 	Mode        string          `json:"mode"`
+	Source      string          `json:"source"`
 	URL         string          `json:"url"`
 	Attributes  []PoolAttribute `json:"attributes,omitempty"`
 	SortOptions []SortOption    `json:"sort_options,omitempty"`
