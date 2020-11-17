@@ -208,19 +208,14 @@ type PoolProviders struct {
 
 // QueryFilter contains the fields for a single pre-search query filter.
 type QueryFilter struct {
-	ID     string             `json:"id"`
-	Label  string             `json:"label"`
-	Values []QueryFilterValue `json:"values"`
+	ID      string             `json:"id"`      // global filter id
+	Label   string             `json:"label"`   // label shown in client
+	Sources []string           `json:"sources"` // pool sources that contributed values to this filter (solr, eds, ...)
+	Values  []QueryFilterValue `json:"values"`  // the actual values and accumulated counts across sources
 }
 
 // QueryFilterValue contains the fields for an individual pre-search query filter value.
 type QueryFilterValue struct {
 	Value string `json:"value"`
 	Count int    `json:"count"`
-}
-
-// QueryFilterResponse contains the full response for a query for all pre-search filters.
-type QueryFilterResponse struct {
-	Sources []string      `json:"sources"`
-	Filters []QueryFilter `json:"filters"`
 }
