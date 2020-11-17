@@ -210,7 +210,7 @@ type PoolProviders struct {
 type QueryFilter struct {
 	ID     string             `json:"id"`
 	Label  string             `json:"label"`
-	Values []QueryFilterValue `json:"values,omitempty"`
+	Values []QueryFilterValue `json:"values"`
 }
 
 // QueryFilterValue contains the fields for an individual pre-search query filter value.
