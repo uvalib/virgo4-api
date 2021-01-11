@@ -212,6 +212,7 @@ type PoolProviders struct {
 type QueryFilter struct {
 	ID      string             `json:"id"`      // global filter id
 	Label   string             `json:"label"`   // label shown in client
+	Hidden  bool               `json:"hidden"`  // whether to hide from selection in advanced search
 	Sources []string           `json:"sources"` // pool sources that contributed values to this filter (solr, eds, ...)
 	Values  []QueryFilterValue `json:"values"`  // the actual values and accumulated counts across sources
 }
