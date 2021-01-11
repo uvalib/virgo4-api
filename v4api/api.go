@@ -138,7 +138,8 @@ type Facet struct {
 	ID      string        `json:"id"`
 	Name    string        `json:"name"`
 	Type    string        `json:"type"`
-	Sort    string        `json:"sort"` // useful for pre-search filter responses
+	Sort    string        `json:"sort"`   // useful for pre-search filter responses
+	Hidden  bool          `json:"hidden"` // whether to hide from selection in advanced search
 	Buckets []FacetBucket `json:"buckets,omitempty"`
 }
 
