@@ -95,19 +95,18 @@ type Filter struct {
 
 // PoolResult contains search responce data from a pool
 type PoolResult struct {
-	ServiceURL      string                 `json:"service_url,omitempty"`
-	PoolName        string                 `json:"pool_id,omitempty"`
-	Pagination      Pagination             `json:"pagination,omitempty"`
-	Sort            SortOrder              `json:"sort,omitempty"`
-	Groups          []Group                `json:"group_list,omitempty"`
-	FacetList       []Facet                `json:"facet_list,omitempty"`
-	Confidence      string                 `json:"confidence,omitempty"`
-	ElapsedMS       int64                  `json:"elapsed_ms,omitempty"`
-	Debug           map[string]interface{} `json:"debug,omitempty"`
-	Warnings        []string               `json:"warnings,omitempty"`
-	StatusCode      int                    `json:"status_code"`
-	StatusMessage   string                 `json:"status_msg,omitempty"`
-	ContentLanguage string                 `json:"-"`
+	ServiceURL    string                 `json:"service_url,omitempty"`
+	PoolName      string                 `json:"pool_id,omitempty"`
+	Pagination    Pagination             `json:"pagination,omitempty"`
+	Sort          SortOrder              `json:"sort,omitempty"`
+	Groups        []Group                `json:"group_list,omitempty"`
+	FacetList     []Facet                `json:"facet_list,omitempty"`
+	Confidence    string                 `json:"confidence,omitempty"`
+	ElapsedMS     int64                  `json:"elapsed_ms,omitempty"`
+	Debug         map[string]interface{} `json:"debug,omitempty"`
+	Warnings      []string               `json:"warnings,omitempty"`
+	StatusCode    int                    `json:"status_code"`
+	StatusMessage string                 `json:"status_msg,omitempty"`
 }
 
 // PoolFacets contains facets for a given pool search
