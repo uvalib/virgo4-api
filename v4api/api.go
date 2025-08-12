@@ -187,6 +187,7 @@ type RecordField struct {
 	Item            string      `json:"item,omitempty"`       // for certain URLs (e.g. hathitrust)
 	Icon            string      `json:"icon,omitempty"`       // for certain URLs (e.g. copyrights)
 	CitationPart    string      `json:"citation_part,omitempty"`
+	Filter          string      `json:"filter,omitempty"` // name of filter this field can be used in
 	StructuredValue interface{} `json:"structured_value,omitempty"`
 }
 
