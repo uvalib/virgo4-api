@@ -180,12 +180,13 @@ type RecordField struct {
 	Type            string      `json:"type,omitempty"` // empty implies "text"
 	Label           string      `json:"label,omitempty"`
 	Value           string      `json:"value"`
-	Separator       string      `json:"separator,omitempty"`  // literal string, or pre-defined values such as "paragraph"
-	Visibility      string      `json:"visibility,omitempty"` // e.g. "basic" or "detailed".  empty implies "basic"
-	Display         string      `json:"display,omitempty"`    // e.g. "optional".  empty implies not optional
-	Provider        string      `json:"provider,omitempty"`   // for URLs (e.g. "hathitrust", "proquest")
-	Item            string      `json:"item,omitempty"`       // for certain URLs (e.g. hathitrust)
-	Icon            string      `json:"icon,omitempty"`       // for certain URLs (e.g. copyrights)
+	AlternateValue  string      `json:"alternate_value,omitempty"` // useful when display value does not work as-is (e.g. author links when author contains '(advisor)')
+	Separator       string      `json:"separator,omitempty"`       // literal string, or pre-defined values such as "paragraph"
+	Visibility      string      `json:"visibility,omitempty"`      // e.g. "basic" or "detailed".  empty implies "basic"
+	Display         string      `json:"display,omitempty"`         // e.g. "optional".  empty implies not optional
+	Provider        string      `json:"provider,omitempty"`        // for URLs (e.g. "hathitrust", "proquest")
+	Item            string      `json:"item,omitempty"`            // for certain URLs (e.g. hathitrust)
+	Icon            string      `json:"icon,omitempty"`            // for certain URLs (e.g. copyrights)
 	CitationPart    string      `json:"citation_part,omitempty"`
 	Filter          string      `json:"filter,omitempty"` // name of filter this field can be used in
 	StructuredValue interface{} `json:"structured_value,omitempty"`
