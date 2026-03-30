@@ -13,8 +13,9 @@ type SearchResponse struct {
 
 // Suggestion contains search suggestion data
 type Suggestion struct {
-	Type  string `json:"type"`
-	Value string `json:"value"`
+	Type   string `json:"type"`
+	Value  string `json:"value"`
+	Reason string `json:"reason,omitempty"`
 }
 
 // SortOptionEnum is the enumerated type for WorldCat sort options
