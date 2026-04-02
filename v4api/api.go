@@ -8,7 +8,6 @@ type SearchResponse struct {
 	TotalHits   int            `json:"total_hits"`
 	Results     []*PoolResult  `json:"pool_results"`
 	Warnings    []string       `json:"warnings"`
-	Suggestions []Suggestion   `json:"suggestions"`
 }
 
 // Suggestion contains search suggestion data
