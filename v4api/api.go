@@ -194,7 +194,7 @@ type RecordField struct {
 
 // SearchPreferences contains preferences for the search
 type SearchPreferences struct {
-	AIPrompt string `json:"ai_prompt"`
+	ExcludePools []string `json:"exclude_pools"`
 }
 
 // Provider contains the attributes for a single provider
